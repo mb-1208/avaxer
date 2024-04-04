@@ -71,7 +71,7 @@ const Earning = ({ contractRef, getBalance }) => {
     }
 
     setContractData();
-  }, []);
+  }, [account?.address, contractRef.current]);
 
   if (!account?.address) {
     return;
