@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-secondary overflow-x-hidden bg-[#f6f3ef];
+  }
+
+  .width {
+    @apply xl:max-w-[1180px] lg:max-w-[1100px] md:max-w-[870px] mx-auto lg:px-[15px] px-[20px];
+  }
+}
+
+.plan-card {
+  overflow-wrap: break-word;
+  word-break: break-all;
+}
+
+.color {
+  color: #e31c23a2;
+}
+
+.ellipsis-control {
+  white-space: nowrap;
+  /* Prevent wrapping */
+  overflow: hidden;
+  /* Hide overflow */
+  text-overflow: ellipsis;
+  /* Show ellipsis on overflow */
+}
+
+/* Track */
+::-webkit-scrollbar {
+  width: 8px;
+  /* Width of the scrollbar */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #E31C23;
+  /* Color of the scrollbar handle */
+  border-radius: 20px;
+  /* Rounded corners */
+  border: 1px solid white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-track {
+  background: #fff;
+  /* Darker color when hovered */
+}
