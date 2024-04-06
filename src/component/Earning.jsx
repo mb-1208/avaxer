@@ -14,6 +14,7 @@ const Earning = ({ contractRef, getBalance }) => {
   const [AvailableRE, setAvailableRE] = useState();
   const [TotalRE, setTotalRE] = useState();
   const [IsWithdraw, setIsWithdraw] = useState(false);
+  const [domain, setDomain] = useState(null);
 
   const handleCopy = () => {
     const linkToCopy = document.getElementById("linkToCopy").innerText;
@@ -73,6 +74,12 @@ const Earning = ({ contractRef, getBalance }) => {
     setContractData();
   }, [account?.address, contractRef.current]);
 
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    console.log(url)
+    setDomain(url.host);
+  }, []);
+
   if (!account?.address) {
     return;
   }
@@ -129,18 +136,20 @@ const Earning = ({ contractRef, getBalance }) => {
               <span className="text-black  font-primary text-[14px] font-semibold">
                 Referral link
               </span>
-              <h3
-                className="font-semibold text-black font-primary mb-3"
-                id="linkToCopy"
-              >
-                https://{config.referralDomain}/?ref={account?.address}{" "}
+              <div className="flex mb-3">
+                <h3
+                  className="font-semibold text-black font-primary"
+                  id="linkToCopy"
+                >
+                  https://{domain}/?ref={account?.address}{" "}
+                </h3>
                 <span
                   onClick={handleCopy}
                   className="px-2 py-1 rounded-lg cursor-pointer text-white text-[14px] inline-block ms-2 bg-[#0ea5e9]"
                 >
                   Copy
                 </span>
-              </h3>
+              </div>
             </div>
             <div className="duration-section border-b-[2px] border-b-[#facc1552] ">
               <span className="text-black  font-primary text-[14px] font-semibold block mt-3">

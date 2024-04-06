@@ -58,7 +58,7 @@ const Plan = ({ contractRef, getBalance }) => {
   ];
   const [amounts, setAmounts] = useState(new Array(planContent.length).fill(''));
 
-  const invest = async (amount, address, plan) => {
+  const invest = async (amount, refAddress, plan) => {
     try {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
@@ -69,7 +69,7 @@ const Plan = ({ contractRef, getBalance }) => {
       };
       const tx = await writeContract
         .invest(
-          address,
+          refAddress,
           plan,
           overrides
         );
@@ -98,7 +98,16 @@ const Plan = ({ contractRef, getBalance }) => {
               alert("Please fill in the input field first.");
               return;
             }
-            invest(amounts[index], account?.address, element.planIndex);
+            const params = new URLSearchParams(window.location.search);
+            const refValue = params.get('ref');
+
+            let refAddress;
+            if (refValue !== null) {
+              refAddress = refValue
+            } else {
+              refAddress = account?.address
+            }            
+            invest(amounts[index], refAddress, element.planIndex);
           };
 
           return (
