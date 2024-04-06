@@ -36,9 +36,11 @@ const Earning = ({ contractRef, getBalance }) => {
     const countDivNum = Number(divInEther) + Number(refInEther);
     const formattedNumber = countDivNum.toLocaleString({ style: 'decimal', minimumFractionDigits: 1, maximumFractionDigits: 8 });
     setAvailable(formattedNumber);
-    const dc1InEther = ethers.utils.formatEther(downlineCount[0]);
-    const dc2InEther = ethers.utils.formatEther(downlineCount[1]);
-    const dc3InEther = ethers.utils.formatEther(downlineCount[2]);
+    console.log(downlineCount[0], downlineCount[1], downlineCount[2]);
+    const dc1InEther = downlineCount[0];
+    const dc2InEther = downlineCount[1];
+    const dc3InEther = downlineCount[2];
+    console.log(Number(dc1InEther), Number(dc2InEther), Number(dc3InEther));
     const countDCNum = Number(dc1InEther) + Number(dc2InEther) + Number(dc3InEther);
     setRefCount(countDCNum);
     setAvailableRE(toFormatEther(referralBonus));
@@ -152,11 +154,11 @@ const Earning = ({ contractRef, getBalance }) => {
               </div>
             </div>
             <div className="duration-section border-b-[2px] border-b-[#facc1552] ">
-              <span className="text-black  font-primary text-[14px] font-semibold block mt-3">
+              <span className="text-black font-primary text-[14px] font-semibold block mt-3">
                 Referral Count
               </span>
               <h3 className="font-semibold text-red font-primary mb-3 text-[20px]">
-                {RefCount} AVAX
+                {RefCount} AVAXER {RefCount <= 1 ? "BRO" : "BROS"}
               </h3>
             </div>
             <div className="roi-section border-b-[2px] border-b-[#facc1552] ">
